@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Werewolf Therapeutics</title>
-    <script type="text/javascript" src="js/gsap.min.js"></script>
-    <type  type="text/javascript" src="js/ScrollToPlugin.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="css/interactive.css">
     <link rel="stylesheet" type="text/css" href="css/werewolf.css">
 </head>
@@ -16,9 +15,6 @@
 <img src="IN/nav.jpg" class="placementImg" style="position: sticky; top:0;z-index: 100;">
 <img src="IN/top.jpg" class="placementImg">
 
-    
-<div>Systemic Delivery</div>
-<div>Tumor Microenvironment</div>
 
 
 <div class='cytokine'>
@@ -38,6 +34,7 @@
         <img src="images/ppt_images/Protease-Cleavable-Linkers-red.png" alt="">
         <h1 class="molText">Protease-Cleavable Linkers</h1>
     </div>
+    <div class="deliveryText" style="opacity: 0;">Systemic Delivery</div>
 </div>
 
 
@@ -113,7 +110,11 @@
     </div>
     
 </div>
-<div class="membrane"></div>
+<div class="membraneAndReceptor">
+    <div id="startTumorMicroenvironment">Tumor Microenvironment</div>
+    <img src="images/ppt_images/membrane.png" style="width:100vw" alt="">
+    <img src="images/ppt_images/receptor.png" style="position:relative; bottom:500px; left:30%; width: 450px;  align-self:center;z-index:-1; ">
+</div>
 
 <div class="hero__arrow" id="hero-arrow">
     <div class="hero__arrow__wrapper">
@@ -121,6 +122,10 @@
 </div>
 
 <img src="IN/bottom.jpg" class="placementImg">
+
+
+<script type="text/javascript" src="js/gsap.min.js"></script>
+<script src="    https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js"></script>
 
 <script>
     const colorScheme = [ 
@@ -147,22 +152,7 @@
 
 
 
-
-
-    // cyanImage.addEventListener("mouseenter", function(event){
-    //     event.target.style.filter = "grayscale(1)";
-
-    //     setTimeout( ()=>{
-    //         event.target.style.border = "none";
-    //     },500)
-    // });
-
-    // cyanImage.addEventListener('mouseout', el=>{
-    //     el.target.style.filter = "grayscale(0)";
-    // })
-
-
-
+    gsap.registerPlugin(ScrollTrigger);
     gsap.defaults({ ease: "power1", duration: .5});
 
 
@@ -171,7 +161,7 @@
            tl.from([halfLifeExtension.firstElementChild,
             cyanImage.firstElementChild ,
             inactivationDomain.firstElementChild,
-            proteaseCleavableLinkers.firstElementChild],{transform:"scale(.7)",  filter: "grayscale(1)",stagger:.8});
+            proteaseCleavableLinkers.firstElementChild],{transform:"scale(.7)", y:50, filter: "grayscale(1)",stagger:.8});
             tl.to([halfLifeExtension.firstElementChild,
             cyanImage.firstElementChild ,
             inactivationDomain.firstElementChild,
@@ -184,14 +174,45 @@
         let tl = gsap.timeline();
         tl.from([halfLifeExtensionTextBox, cyanTextBox, proteaseCleavableLinkersTextBox, inactivationDomainTextBox ],
         {opacity: 0, transform:"scale(.9)", stagger: .8}),
-        tl.to([halfLifeExtensionTextBox, cyanTextBox, proteaseCleavableLinkersTextBox, inactivationDomainTextBox ],
-        {opacity: 1, transform:"scale(1)",stagger: .8});
+        tl.to([halfLifeExtensionTextBox, cyanTextBox, proteaseCleavableLinkersTextBox, inactivationDomainTextBox ], 
+               { opacity: 1, transform:"scale(1)",stagger: .8});
     }
 
-    let tlMaster =  gsap.timeline();
-    tlMaster.to(cytokine, {transform: "scale(1)", duration:3, ease: "circle"});
+    fadeOnMicroEnviro=()=>{
+        let tl = gsap.timeline();
+        tl.fromTo(".membraneAndReceptor", 
+        {scrollTrigger:{
+            start: 'top bottom',
+            marker:false },
+             opacity: 0, duration:2},
+        {opacity:1})
+    }
+
     grayScale();
     fadeOnBoxes();
+    fadeOnMicroEnviro();
+    let tlMaster =  gsap.timeline();
+    let membraneTrigger = "top bottom";
+    tlMaster.to(cytokine, {
+                        transform: "scale(1)", duration:3, ease: "circle"})
+            .to(".textBoxes",{ scrollTrigger:{
+                                trigger: ".textBoxes",
+                                start: membraneTrigger,
+                                end: "80%z", 
+                                markers:false,
+                                toggleActions: "play play pause play"
+                },
+                opacity: 0})
+            .to('.cytokine', {scrollTrigger:{
+                               trigger: ".textBoxes",
+                                start: "10%  20%",
+                                end: "100% 90%",
+                                markers: true,
+                                toggleActions: "play pause reverse reset"
+            },
+            y:700, x:110, duration:5, ease: "power1"} )
+            .to('.deliveryText', {opacity:1});
+
    
 
 

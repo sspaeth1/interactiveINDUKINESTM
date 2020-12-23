@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Werewolf Therapeutics</title>
+  <link rel="stylesheet" type="text/css" href="css/interactive.css">
+    <link rel="stylesheet" type="text/css" href="css/werewolf.css">
+</head>
+<body>
+
+    <style>
+        .cytokine{
+            stroke-color: royalblue;
+        }
+        .textboxes{
+            display:flex;
+            flex-flow: row wrap;
+        }
+        .textbox{
+            width: 30%;
+            height: 300px;
+        }
+
+        .membraneAndReceptor{
+            display:flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            align-content: center;
+            
+        }
+
+        .receptor{
+            width: 50px;
+            height: 100px;
+            background-color: peru;
+            align-self: center;
+        }
+
+        .membrane{
+            width: 100vw;
+            height: 30px;
+            background-color: rebeccapurple;
+            margin:0;
+            padding:0;
+        }
+
+        .cytokinePart{
+            width: 100px;
+            height: 100px;
+            background-color: royalblue;
+            border-radius: 100rem;
+        }
+        .contentRowsTop{
+            background-color: rgb(80, 80, 80);
+            width:90%;
+            height: 300px;
+            margin:5%;
+        }
+
+    </style>
+
+
+<div class="topContent">
+    <div class="contentRowsTop"></div>
+    <div class="contentRowsTop"></div>
+</div>
+
+    <div  class="cytokine"  >
+        <!-- <svg id="cytokine" width="200" height="200" >
+            <symbol>
+                <ellipse id="circle" cx='51' cy="51" rx="50" fill="slateBlue"  stroke="red">  </ellipse>
+            </symbol>
+
+            <use xlink:href="#circle" x="50"></use>
+            <use xlink:href="#circle" x="-50"></use>
+            <use xlink:href="#circle"></use>   
+        </svg>     -->
+        <div class="cytokinePart" ></div>
+        <div class="cytokinePart"></div>
+        <div class="cytokinePart"></div>
+    </div>
+
+    <div class="textboxes"  style="opacity:0">
+        <div class="textbox" style="opacity:1"></div>
+        <div class="textbox" style="opacity:1"></div>
+        <div class="textbox" style="opacity:1"></div>
+    </div>
+
+    <div class='membraneAndReceptor'>
+        <div class="receptor"></div>
+        <div class="membrane"></div>
+    </div>
+
+    <div class="topContent">
+        <div class="contentRowsTop"></div>
+        <div class="contentRowsTop"></div>
+        <div class="contentRowsTop"></div>
+        <div class="contentRowsTop"></div>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
+
+<script>
+
+
+
+let tl = gsap.timeline();
+        tl.to('.textboxes',{
+            scrollTrigger:{
+                toggleActions: "play pause rewind reset",
+                start: "top 90%",
+                end:"bottom 40%",
+                markers: true
+            },
+            opacity:1, 
+            border: "1px solid red",
+            x: 200,
+            duration:10});
+
+    fadeInCytokine = () =>{
+    let tl = gsap.timeline();
+        tl.fromTo('.cytokine',{opacity:0}, {opacity: 1, duration:5})
+        return tl;
+    }
+
+    // fadeInTextBox=()=>{
+    // let tl = gsap.timeline();
+    //     tl.to('.textboxes',{
+    //         scrollTrigger:{
+    //             trigger: "textboxes",
+    //             start: "top bottom",
+    //             // pin:true,
+    //             marker: true
+    //         },
+    //         opacity:1,
+    //         border: "1px solid red"});
+    //         return tl;
+    // }
+
+
+    fadeInCytokine();
+
+</script>
+
+</body>
+</html>

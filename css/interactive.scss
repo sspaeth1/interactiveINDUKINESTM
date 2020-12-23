@@ -42,6 +42,7 @@
         flex-flow: row nowrap;
         justify-content: center;
         align-items: flex-end;
+        margin-top:10%;
         
         .cytokinePart{
         }
@@ -100,12 +101,24 @@
         }
     }
 
-    .membrane{
+    .memembraneAndReceptor{
         width:100vw;
         height: 30px;
         position: relative;
         background-color:$white;
-        margin: 50px auto;
+        margin: 10% auto;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .deliveryText{
+        color:$white;
+        font-size: 2rem;
+        position: relative;
+        top: 105px;
+        left: 349px;
     }
 
     .textBoxes{
@@ -121,7 +134,7 @@
         display: flex;
         flex-flow: column wrap;
        background-color: $darkGray;
-       margin: 10px;
+       margin: 2rem;
     }
 
     .textbox span{

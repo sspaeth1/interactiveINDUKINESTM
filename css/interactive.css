@@ -20,6 +20,7 @@ img {
   flex-flow: row nowrap;
   justify-content: center;
   align-items: flex-end;
+  margin-top: 10%;
 }
 .cytokine .halfLifeExtensionDomain {
   /* background-color: blue; */
@@ -92,12 +93,24 @@ img {
   border-color: #951e1e;
 }
 
-.membrane {
+.memembraneAndReceptor {
   width: 100vw;
   height: 30px;
   position: relative;
   background-color: #fff;
-  margin: 50px auto;
+  margin: 10% auto;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.deliveryText {
+  color: #fff;
+  font-size: 2rem;
+  position: relative;
+  top: 105px;
+  left: 349px;
 }
 
 .textBoxes {
@@ -113,7 +126,7 @@ img {
   display: flex;
   flex-flow: column wrap;
   background-color: #252525;
-  margin: 10px;
+  margin: 2rem;
 }
 
 .textbox span {
