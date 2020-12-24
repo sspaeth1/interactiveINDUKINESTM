@@ -16,10 +16,17 @@ let cytokine = document.querySelector(".cytokine");
 buttonStart = document.querySelector(".start");
 buttonEnd = document.querySelector(".end");
 
+const molecules = [
+  halfLifeExtension.firstElementChild,
+  cyanImage.firstElementChild,
+  inactivationDomain.firstElementChild,
+  proteaseCleavableLinkers.firstElementChild,
+];
+
 gsap.registerPlugin(ScrollTrigger);
 gsap.defaults({ ease: "circle", duration: 0.5 });
 
-grayScale();
+grayScale(molecules);
 
 fadeOnMicroEnviro = () => {
   let tl = gsap.timeline();
@@ -51,29 +58,3 @@ tl.to(".protease", { x: 800, y: -80, duration: 2, opacity: 1, ease: "power1" })
   .to(".membraneAndReceptor", { opacity: 1, y: -20, duration: 3, "z-index": -2 }, "-=2")
   .to(".receptor", { y: -30, duration: 3 }, "-=3")
   .addLabel("end");
-
-buttonPlayReplay.addEventListener("click", () => {
-  if ((buttonPlayReplay.innerText = "play")) {
-    buttonPlayReplay.innerText = "Replay";
-    tl.play("beginning");
-  } else {
-    buttonPlayReplay.innerText = "restart";
-    tl.play("beginning");
-  }
-});
-
-buttonReset.addEventListener("click", () => {
-  tl.seek("beginning");
-  tl.pause();
-  grayScale();
-});
-
-buttonStart.addEventListener("click", () => {
-  tl.seek("beginning");
-  tl.pause();
-  grayScale();
-});
-
-buttonEnd.addEventListener("click", () => {
-  tl.seek("end");
-});
