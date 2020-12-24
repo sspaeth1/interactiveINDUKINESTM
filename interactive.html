@@ -10,23 +10,32 @@
 </head>
 <body>
 
-    <div class="membraneAndReceptor" style="opacity:0; position: absolute; top:600px">
+    <div class="membraneAndReceptor" style="opacity:0;">
         <div id="startTumorMicroenvironment">Tumor Microenvironment</div>
-        <img  class="membrane" src="images/ppt_images/membrane.png" style="width:100vw" alt="">
+        <div class="membrane"></div>
+        <!-- <img  class="membrane" src="images/ppt_images/membrane.png" alt=""> -->
         <img class="receptor" src="images/ppt_images/receptor.png">
     </div>
 
-<button class='begin'>Click to Begin</button>
+
+    <ul class="controls">
+        <li class='begin'>Play</li>
+        <li class="start">Start</li>
+        <li class="end">End</li>
+        <li class='reset'>Reset</li>
+    </ul>
+
 <div class='cytokine'>
+    <div class="cytokinePart cytokineDomain">
+        <img src="images/ppt_images/yellowCytokine.png" alt="">
+         <h1 class="molText">Cytokine Domain</h1>
+         <div class="deliveryText" style="opacity: 0;">Systemic Delivery</div>
+
     <div class="cytokinePart halfLifeExtensionDomain">
         <img src="images/ppt_images/Half-LifeExtensionDomain.png" style="transition: scale(1)" alt="Half-LifeExtensionDomain">
         <h1 class="molText">Half-Life Extension Domain</h1>
     </div>
-    <div class="cytokinePart cytokineDomain">
-       <img src="images/ppt_images/yellowCytokine.png" alt="">
-        <h1 class="molText">Cytokine Domain</h1>
-        <div class="deliveryText" style="opacity: 0;">Systemic Delivery</div>
-    </div>
+
     <div class="cytokinePart inactivationDomain">
         <img src="images/ppt_images/InactivationDomain_cyan.png" style="transition: scale(1)" alt="">
         <h1 class="molText">Inactivation Domain</h1>
@@ -38,6 +47,7 @@
     <div class="cytokinePart protease" style="opacity: 0;">
         <img src="images/ppt_images/protease.png" alt="">
     </div>
+</div>
 </div>
 
 
@@ -66,8 +76,10 @@
         cyanImage = document.querySelector('.cytokinePart.cytokineDomain'),
         proteaseCleavableLinkers = document.querySelector('.cytokinePart.proteaseCleavableLinkers'),
         inactivationDomain = document.querySelector('.cytokinePart.inactivationDomain'),
-        buttonPlayReset = document.querySelector('button.begin');
-        
+        buttonPlayReplay = document.querySelector('.begin'),
+        buttonReset = document.querySelector('.reset');
+        buttonStart = document.querySelector('.start');
+        buttonEnd = document.querySelector('.end');
 
 
 
@@ -101,21 +113,33 @@
             .to('.cytokine', {y:150, x:200, duration: 2, ease:"power1"}, "-=1")
             .to('.membraneAndReceptor', {opacity:1, y:-20, duration:3, "z-index":-2},"-=2")
             .to('.receptor', {y:-30, duration:3}, "-=3")
+            .addLabel('end');
 
 
-buttonPlayReset.addEventListener("click", function(){
-    
+buttonPlayReplay.addEventListener("click",()=>{
 
-    if( buttonPlayReset.innerText = "restart"){
-        
+    if( buttonPlayReplay.innerText = "play"){
+        buttonPlayReplay.innerText = "Replay"
         tl.play("beginning")
     }else{
-        buttonPlayReset.innerText = "restart";
+        buttonPlayReplay.innerText = "restart";
         tl.play("beginning")
     }  
  });
 
+buttonReset.addEventListener("click", ()=>{
+    tl.seek("beginning");
+    tl.pause();
+});    
 
+buttonStart.addEventListener("click", ()=>{
+    tl.seek("beginning");
+    tl.pause();
+});
+
+buttonEnd.addEventListener('click', ()=>{
+    tl.seek("end");
+})
  
 
    

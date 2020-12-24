@@ -4,15 +4,20 @@
 }
 body {
   font-family: "lato", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-img {
-  z-index: 100;
+.controls {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0;
+  background: #fcb900;
 }
 
-button.begin {
+.controls li {
   background-color: #03748e;
-  padding: 10px;
+  padding: 1% 2%;
   font-size: 2rem;
   color: #fff;
   display: flex;
@@ -20,15 +25,12 @@ button.begin {
   align-content: center;
   text-transform: uppercase;
   margin: 2%;
+  min-width: 15%;
 }
 
-button.begin:hover {
+.controls li:hover {
   background-color: #c4a800;
   color: black;
-}
-
-.placementImg {
-  width: 100vw;
 }
 
 .cytokine {
@@ -39,96 +41,128 @@ button.begin:hover {
   margin-top: 10%;
 }
 .cytokine .protease {
-  top: 50px;
-  left: -1500px;
   position: relative;
-}
-.cytokine .halfLifeExtensionDomain {
-  /* background-color: blue; */
-  left: 130px;
-  position: relative;
-}
-.cytokine .halfLifeExtensionDomain h1 {
-  position: relative;
-  top: -60px;
-  left: -180px;
-  padding: 0.75rem 1.5rem;
-  color: #333;
-  font-size: 1rem;
+  top: -620px;
+  left: -750px;
 }
 .cytokine .cytokineDomain {
-  left: -43px;
-  top: 61px;
   position: relative;
 }
 .cytokine .cytokineDomain h1 {
   position: relative;
   top: -250px;
-  padding: 0.75rem 1.5rem;
+  padding: 5px 5px;
   color: #333;
   font-size: 1rem;
+  background-color: #fff;
+  border: black 1px solid;
+  box-shadow: 2px 2px #03748e;
+  border-radius: 50rem;
+}
+.cytokine .halfLifeExtensionDomain {
+  position: relative;
+  left: -50px;
+  bottom: 236px;
+  z-index: -20;
+}
+.cytokine .halfLifeExtensionDomain h1 {
+  position: relative;
+  top: -60px;
+  left: -180px;
+  padding: 5px 5px;
+  color: #333;
+  font-size: 1rem;
+  background-color: #fff;
+  border: black 1px solid;
+  box-shadow: 2px 2px #03748e;
+  border-radius: 50rem;
 }
 .cytokine .inactivationDomain {
   /* background-color: cyan; */
   position: relative;
-  right: 220px;
+  right: -81px;
+  bottom: 466px;
+  z-index: -20;
 }
 .cytokine .inactivationDomain h1 {
   position: relative;
   top: -130px;
   left: 150px;
-  padding: 0.75rem 1.5rem;
+  padding: 5px 5px;
   color: #333;
   font-size: 1rem;
+  background-color: #fff;
+  border: black 1px solid;
+  box-shadow: 2px 2px #03748e;
+  border-radius: 50rem;
 }
 .cytokine .proteaseCleavableLinkers {
-  right: 411px;
-  top: -5px;
   position: relative;
+  right: -67px;
+  top: -578px;
 }
 .cytokine .proteaseCleavableLinkers h1 {
   position: relative;
   top: -50px;
   right: -84px;
-  padding: 0.75rem 1.5rem;
+  padding: 5px 5px;
   color: #333;
   font-size: 1rem;
+  background-color: #fff;
+  border: black 1px solid;
+  box-shadow: 2px 2px #03748e;
+  border-radius: 50rem;
 }
 
-.memembraneAndReceptor {
-  width: 100vw;
-  height: 30px;
-  position: relative;
-  background-color: #fff;
-  margin: 10% auto;
+.membraneAndReceptor {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column nowrap;
   justify-content: center;
   align-content: center;
-  z-index: -10;
+  z-index: -50;
+  position: absolute;
+  top: 600px;
+  min-width: 100%;
 }
 
 .receptor {
   z-index: -10;
   position: relative;
-  bottom: 500px;
-  left: 30%;
+  bottom: 420px;
+  right: -160px;
   width: 450px;
   align-self: center;
-  z-index: -1;
+  justify-self: flex-end;
+  z-index: -100;
 }
 
 .membrane {
   z-index: -9;
+  min-width: 100%;
+  width: 1000%;
+  min-height: 150px;
+  background: url("../images/ppt_images/membrane.png") repeat-x;
+}
+
+#startTumorMicroenvironment {
+  font-size: 2rem;
 }
 
 .deliveryText {
   color: #03748e;
   font-size: 2rem;
   position: relative;
-  top: -252px;
-  left: 349px;
+  top: -210px;
+  left: 225px;
   font-weight: 900;
+  padding: 1rem;
+  color: #fff;
+  font-size: 2rem;
+  background-color: #333;
+  border: black 1px solid;
+  box-shadow: 2px 2px #03748e;
+  border-radius: 50rem;
+  left: 80%;
 }
 
 .textBoxes {
