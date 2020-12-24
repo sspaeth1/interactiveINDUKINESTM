@@ -3,12 +3,28 @@
   src: url(/font/Lato-Regular.woff2);
 }
 body {
-  background: #25252c;
   font-family: "lato", sans-serif;
 }
 
 img {
   z-index: 100;
+}
+
+button.begin {
+  background-color: #03748e;
+  padding: 10px;
+  font-size: 2rem;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-transform: uppercase;
+  margin: 2%;
+}
+
+button.begin:hover {
+  background-color: #c4a800;
+  color: black;
 }
 
 .placementImg {
@@ -22,39 +38,35 @@ img {
   align-items: flex-end;
   margin-top: 10%;
 }
+.cytokine .protease {
+  top: 50px;
+  left: -1500px;
+  position: relative;
+}
 .cytokine .halfLifeExtensionDomain {
   /* background-color: blue; */
-  left: 100px;
+  left: 130px;
   position: relative;
 }
 .cytokine .halfLifeExtensionDomain h1 {
   position: relative;
   top: -60px;
   left: -180px;
-  background: rgba(128, 128, 128, 0.1);
   padding: 0.75rem 1.5rem;
-  border-bottom: 5px solid rgba(128, 128, 128, 0.1);
   color: #333;
   font-size: 1rem;
-  border-radius: 5rem;
-  background: rgba(3, 116, 142, 0.8);
-  border-color: #004c5e;
 }
 .cytokine .cytokineDomain {
-  left: -115px;
+  left: -43px;
+  top: 61px;
   position: relative;
 }
 .cytokine .cytokineDomain h1 {
   position: relative;
   top: -250px;
-  background: rgba(128, 128, 128, 0.1);
   padding: 0.75rem 1.5rem;
-  border-bottom: 5px solid rgba(128, 128, 128, 0.1);
   color: #333;
   font-size: 1rem;
-  border-radius: 5rem;
-  background: rgba(196, 168, 0, 0.8);
-  border-color: #917c00;
 }
 .cytokine .inactivationDomain {
   /* background-color: cyan; */
@@ -65,14 +77,9 @@ img {
   position: relative;
   top: -130px;
   left: 150px;
-  background: rgba(128, 128, 128, 0.1);
   padding: 0.75rem 1.5rem;
-  border-bottom: 5px solid rgba(128, 128, 128, 0.1);
   color: #333;
   font-size: 1rem;
-  border-radius: 5rem;
-  background: rgba(116, 180, 148, 0.8);
-  border-color: #325d47;
 }
 .cytokine .proteaseCleavableLinkers {
   right: 411px;
@@ -83,14 +90,9 @@ img {
   position: relative;
   top: -50px;
   right: -84px;
-  background: rgba(128, 128, 128, 0.1);
   padding: 0.75rem 1.5rem;
-  border-bottom: 5px solid rgba(128, 128, 128, 0.1);
   color: #333;
   font-size: 1rem;
-  border-radius: 5rem;
-  background: rgba(192, 38, 38, 0.8);
-  border-color: #951e1e;
 }
 
 .memembraneAndReceptor {
@@ -103,14 +105,30 @@ img {
   flex-flow: column wrap;
   justify-content: center;
   align-content: center;
+  z-index: -10;
+}
+
+.receptor {
+  z-index: -10;
+  position: relative;
+  bottom: 500px;
+  left: 30%;
+  width: 450px;
+  align-self: center;
+  z-index: -1;
+}
+
+.membrane {
+  z-index: -9;
 }
 
 .deliveryText {
-  color: #fff;
+  color: #03748e;
   font-size: 2rem;
   position: relative;
-  top: 105px;
+  top: -252px;
   left: 349px;
+  font-weight: 900;
 }
 
 .textBoxes {

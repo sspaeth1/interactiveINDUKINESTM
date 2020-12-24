@@ -8,12 +8,9 @@
    $darkGray: rgb(37, 37, 37);
 
    @mixin h1Label {
-        background: $h1LabelDefault;
         padding: .75rem 1.5rem;
-        border-bottom: 5px solid $h1LabelDefault;
         color: #333;
         font-size:1rem;
-        border-radius: 5rem;
    }
    @mixin tableLable {
       border: $white 1px solid;      
@@ -25,13 +22,29 @@
     }
 
     body{
-        background: rgb(37, 37, 44);
         font-family: "lato", sans-serif;
     }
 
     img{
         z-index: 100;
     }
+
+    button.begin{
+        background-color: $blue;
+        padding: 10px;
+        font-size: 2rem;
+        color: $white;
+        display: flex;
+        justify-content:center;
+        align-content: center;
+        text-transform: uppercase;
+        margin:2%;
+    }
+    button.begin:hover{
+        background-color: $yellow;
+        color: black;
+    }
+
 
     .placementImg{
         width: 100vw;
@@ -44,32 +57,30 @@
         align-items: flex-end;
         margin-top:10%;
         
-        .cytokinePart{
+        .protease{
+            top: 50px;
+            left: -1500px;
+            position: relative;
         }
 
         .halfLifeExtensionDomain{
             /* background-color: blue; */
-            left: 100px;
+            left: 130px;
             position: relative;
             h1{
                 position: relative;
                 top: -60px;
                 left: -180px;
-                @include h1Label();
-                background:adjust-color($blue, $alpha: -.2);
-                border-color: adjust-color($blue, $saturation: 25%, $lightness: -10%);
-            }
+                @include h1Label();    }
         }
         .cytokineDomain{
-            left:-115px;
+            left: -43px;
+            top: 61px;
             position: relative;
             h1{
                 position: relative;
                 top: -250px;
                 @include h1Label();
-                background:adjust-color($yellow,$alpha: -.2);
-                border-color: adjust-color($yellow, $saturation: 0%, $lightness: -10%);
-
             }
         }
 
@@ -82,9 +93,7 @@
                 top: -130px;
                 left: 150px;
                 @include h1Label();
-                background:adjust-color($cyan, $alpha: -.2);
-                border-color: adjust-color($cyan, $saturation: 0%, $lightness: -30%);
-            }
+              }
         }
         .proteaseCleavableLinkers{
             right: 411px;
@@ -95,9 +104,7 @@
                 top: -50px;
                 right: -84px;
                 @include h1Label();
-                background:adjust-color($redTint,  $alpha: -.2);
-                border-color: adjust-color($red, $saturation: 0%, $lightness: -10%);
-            }
+               }
         }
     }
 
@@ -111,14 +118,24 @@
         flex-flow: column wrap;
         justify-content: center;
         align-content: center;
+        z-index: -10;
+    }
+
+    .receptor{
+        z-index: -10;
+        position:relative; bottom:500px; left:30%; width: 450px;  align-self:center;z-index:-1; 
+    }
+    .membrane{
+        z-index: -9;
     }
 
     .deliveryText{
-        color:$white;
+        color:$blue;
         font-size: 2rem;
         position: relative;
-        top: 105px;
+        top: -252px;
         left: 349px;
+        font-weight: 900;
     }
 
     .textBoxes{

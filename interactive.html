@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Werewolf Therapeutics</title>
+
+    <link rel="stylesheet" type="text/css" href="css/interactive.css">
+    <link rel="stylesheet" type="text/css" href="css/werewolf.css">
+</head>
+<body>
+
+    <div class="membraneAndReceptor" style="opacity:0; position: absolute; top:600px">
+        <div id="startTumorMicroenvironment">Tumor Microenvironment</div>
+        <img  class="membrane" src="images/ppt_images/membrane.png" style="width:100vw" alt="">
+        <img class="receptor" src="images/ppt_images/receptor.png">
+    </div>
+
+<button class='begin'>Click to Begin</button>
+<div class='cytokine'>
+    <div class="cytokinePart halfLifeExtensionDomain">
+        <img src="images/ppt_images/Half-LifeExtensionDomain.png" style="transition: scale(1)" alt="Half-LifeExtensionDomain">
+        <h1 class="molText">Half-Life Extension Domain</h1>
+    </div>
+    <div class="cytokinePart cytokineDomain">
+       <img src="images/ppt_images/yellowCytokine.png" alt="">
+        <h1 class="molText">Cytokine Domain</h1>
+        <div class="deliveryText" style="opacity: 0;">Systemic Delivery</div>
+    </div>
+    <div class="cytokinePart inactivationDomain">
+        <img src="images/ppt_images/InactivationDomain_cyan.png" style="transition: scale(1)" alt="">
+        <h1 class="molText">Inactivation Domain</h1>
+    </div>
+    <div class="cytokinePart proteaseCleavableLinkers" >
+        <img src="images/ppt_images/Protease-Cleavable-Linkers-red.png" style="opacity:1" alt="">
+        <h1 class="molText">Protease-Cleavable Linkers</h1>
+    </div>
+    <div class="cytokinePart protease" style="opacity: 0;">
+        <img src="images/ppt_images/protease.png" alt="">
+    </div>
+</div>
+
+
+
+
+
+<div class="hero__arrow" id="hero-arrow">
+    <div class="hero__arrow__wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.01 13.95" width="28" height="15"><defs><style>.cls-1{fill:#fff;fill-rule:evenodd;}</style></defs><title>arrow-down</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><polygon class="cls-1" points="27.02 0.35 26.67 0 13.51 13.25 0.35 0 0 0.35 13.51 13.95 13.85 13.6 13.85 13.6 27.02 0.35"></polygon></g></g></svg>                    </div>
+</div>
+
+<script type="text/javascript" src="js/gsap.min.js"></script>
+<script src="    https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js"></script>
+
+<script>
+    const colorScheme = [ 
+        {"cytokineDomain": "yellow"},
+        {"halfLifeExtensionDomain": "blue"},
+        {"proteaseCleavableLinkers": "red" },
+        {"inactivationDomain": "cyan"}
+    ];
+
+    let cytokine = document.querySelector('.cytokine');
+
+        halfLifeExtension = document.querySelector('.cytokinePart.halfLifeExtensionDomain'),
+        cyanImage = document.querySelector('.cytokinePart.cytokineDomain'),
+        proteaseCleavableLinkers = document.querySelector('.cytokinePart.proteaseCleavableLinkers'),
+        inactivationDomain = document.querySelector('.cytokinePart.inactivationDomain'),
+        buttonPlayReset = document.querySelector('button.begin');
+        
+
+
+
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.defaults({ ease: "circle", duration: .5});
+
+
+
+    fadeOnMicroEnviro=()=>{
+        let tl = gsap.timeline();
+        tl.fromTo(".membraneAndReceptor", 
+        {scrollTrigger:{
+            start: 'top bottom',
+            marker:false },
+             opacity: 0, duration:2},
+        {opacity:1})
+    }
+
+
+
+    let tl =  gsap.timeline();
+    let membraneTrigger = "top bottom";
+    tl.addLabel('beginning');
+    tl.pause();
+    tl.to('.protease',{  x:800, y:-80, duration:2, opacity:1, ease: "power1"} )
+            .to('.protease', {opacity:0})
+            .to(halfLifeExtension,{x:-200, y: 200, opacity:0, duration: 2})
+            .to(inactivationDomain, {x: 200, y: 200, opacity:0, duration: 2}, "-=2")
+            .to('.proteaseCleavableLinkers', {opacity:0}, "-=1")
+            .to('.deliveryText', {opacity:1}, "-=1")
+            .to('.cytokine', {y:150, x:200, duration: 2, ease:"power1"}, "-=1")
+            .to('.membraneAndReceptor', {opacity:1, y:-20, duration:3, "z-index":-2},"-=2")
+            .to('.receptor', {y:-30, duration:3}, "-=3")
+
+
+buttonPlayReset.addEventListener("click", function(){
+    
+
+    if( buttonPlayReset.innerText = "restart"){
+        
+        tl.play("beginning")
+    }else{
+        buttonPlayReset.innerText = "restart";
+        tl.play("beginning")
+    }  
+ });
+
+
+ 
+
+   
+
+
+</script>
+
+</body>
+</html>
